@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'signup.dart';
+import 'home.dart';
 // import 'auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'dart:async';
@@ -31,7 +32,7 @@ class LoginPageState extends State<LoginPage> {
           email: _email, password: _password);
       String userId = user.uid;
       // print(userId);
-      // TODO: Open Home Page
+      _navigateHome();
     } catch (e) {
       TDialog tDialog = new TDialog(context);
       tDialog.show(e.code, e.message);
@@ -50,12 +51,19 @@ class LoginPageState extends State<LoginPage> {
     }
   }
 
+  void _navigateHome() async {
+    Map results = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomePage()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: new AppBar(
-        title: new Text("Entertain-Mate"),
+        title: new Text("Entertain-Mate1"),
       ),
       body: Form(
         key: _formKey,
